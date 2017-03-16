@@ -1,0 +1,24 @@
+package com.example.dao;
+
+import com.example.bean.User;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
+/**
+ * @author xiaoqian.wen
+ * @create 2017-03-15 15:47
+ **/
+@Mapper
+public interface UserMapper {
+
+    @Insert("insert into user(username,name,age,balance) values(#{name},#{username},#{age},#{balance})")
+    public int addUser(User user);
+
+    @Select("select * from user where id = #{id} limit 1")
+    public User findOne(@Param("id") long id);
+
+}

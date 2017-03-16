@@ -1,0 +1,1 @@
+insert into user(username,name,age,balance) values('张三','张三',10,12.22);
