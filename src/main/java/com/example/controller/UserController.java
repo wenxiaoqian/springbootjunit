@@ -1,7 +1,6 @@
 package com.example.controller;
 
 import com.example.bean.User;
-import com.example.dao.UserMapper;
 import com.example.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
