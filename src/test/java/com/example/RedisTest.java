@@ -28,6 +28,7 @@ public class RedisTest {
     @Test
     public void testGet(){
         String str = redisTemplate.opsForValue().get("youname");
+
         Assert.assertEquals("wenzijie", str);
     }
 
