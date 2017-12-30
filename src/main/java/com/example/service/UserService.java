@@ -19,15 +19,17 @@ public class UserService {
 
     @Transactional(rollbackFor = Exception.class)
     public void addUser(User user){
+        this.addChild(user);
         userMapper.addUser(user);
 
-        addChild(user);
+        int a = 1/0;
     }
 
     public void addChild(User user){
         user.setUsername("wenzijie");
         user.setAge(3);
         userMapper.addUser(user);
+
     }
 
     public User findOne(long id){
