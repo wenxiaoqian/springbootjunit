@@ -1,9 +1,11 @@
 package com.example.service;
 
-import com.example.bean.User;
-import com.example.dao.UserMapper;
+import com.example.entity.User;
+import com.example.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author xiaoqian.wen
@@ -15,8 +17,17 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public int addUser(User user){
-        return userMapper.addUser(user);
+    @Transactional(rollbackFor = Exception.class)
+    public void addUser(User user){
+        userMapper.addUser(user);
+
+        addChild(user);
+    }
+
+    public void addChild(User user){
+        user.setUsername("wenzijie");
+        user.setAge(3);
+        userMapper.addUser(user);
     }
 
     public User findOne(long id){

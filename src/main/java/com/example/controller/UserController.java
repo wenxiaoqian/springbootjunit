@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.bean.User;
+import com.example.entity.User;
 import com.example.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +27,12 @@ public class UserController {
 
     @GetMapping("/user/add")
     public String addUser(){
-        User user = User.of().setName("wenxq4").setUsername("wenxq").setAge(10).setBalance(new BigDecimal(20));
+        User user = new User();
+        user.setUsername("wenxq");
+        user.setAge(10);
+        user.setBalance(new BigDecimal(20));
         userService.addUser(user);
-        log.info("user name:" + user.getName());
+        log.info("user name:" + user.getUsername());
         return "success4";
     }
 
