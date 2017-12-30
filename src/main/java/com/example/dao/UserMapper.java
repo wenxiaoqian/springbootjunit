@@ -14,9 +14,9 @@ import org.apache.ibatis.annotations.Select;
 public interface UserMapper {
 
     @Insert("insert into user(username,name,age,balance) values(#{name},#{username},#{age},#{balance})")
-    public int addUser(User user);
+    int addUser(User user);
 
     @Select("select * from user where id = #{id} limit 1")
-    public User findOne(@Param("id") long id);
+    User findOne(@Param("id") long id);
 
 }

@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 
-
+/**
+ * @author xiaoqian
+ */
 @RestController
 @Slf4j
 public class UserController {
@@ -19,7 +21,6 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/user/{id}")
-    // 注意，此处使用的是GetMapping注解，该注解的作用类似与@RequestMapping(value="/user/{id}" ,method=RequestMethod.GET)，@PostMapping注解同理
     public User findById(@PathVariable Long id) {
         return this.userService.findOne(id);
     }
